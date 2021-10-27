@@ -1,16 +1,103 @@
 <div class="container">
     <h1>Drag and Drop</h1>
 </div>
+<!-- cdkDropListOrientation="horizontal & vertical" -->
 
-<table class="table" >
+<div
+cdkDropList
+#todoList="cdkDropList"
+[cdkDropListData]="list"
+[cdkDropListConnectedTo]="[doneList]"
+cdkDropListOrientation="horizontal"
+class="list" 
+(cdkDropListDropped)="drop($event)" >
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+</div>
+<div
+cdkDropList
+#doneList="cdkDropList"
+[cdkDropListData]="box"
+[cdkDropListConnectedTo]="[todoList]"
+cdkDropListOrientation="horizontal"
+class="list"  
+(cdkDropListDropped)="drop($event)">
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+
+</div>
+<div
+cdkDropList
+#todoList2="cdkDropList"
+[cdkDropListData]="list"
+[cdkDropListConnectedTo]="[doneList2]"
+cdkDropListOrientation="horizontal"
+class="list" 
+(cdkDropListDropped)="drop($event)" >
+<div class="box" *ngFor="let item of box" cdkDrag>
+  <div class="inside-box" >{{item}}</div></div>
+</div>
+<div
+cdkDropList
+#doneList2="cdkDropList"
+[cdkDropListData]="box"
+[cdkDropListConnectedTo]="[todoList2]"
+cdkDropListOrientation="horizontal"
+class="list"  
+(cdkDropListDropped)="drop($event)">
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+
+</div>
+<div
+cdkDropList
+#todoList3="cdkDropList"
+[cdkDropListData]="list"
+[cdkDropListConnectedTo]="[doneList3]"
+cdkDropListOrientation="horizontal"
+class="list" 
+(cdkDropListDropped)="drop($event)" >
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+</div>
+<div
+cdkDropList
+#doneList3="cdkDropList"
+[cdkDropListData]="box"
+[cdkDropListConnectedTo]="[todoList3]"
+cdkDropListOrientation="horizontal"
+class="list"  
+(cdkDropListDropped)="drop($event)">
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+
+</div>
+<div
+cdkDropList
+#todoList4="cdkDropList"
+[cdkDropListData]="list"
+[cdkDropListConnectedTo]="[doneList4]"
+cdkDropListOrientation="horizontal"
+class="list" 
+(cdkDropListDropped)="drop($event)" >
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+</div>
+<div
+cdkDropList
+#doneList4="cdkDropList"
+[cdkDropListData]="box"
+[cdkDropListConnectedTo]="[todoList4]"
+cdkDropListOrientation="horizontal"
+class="list"
+(cdkDropListDropped)="drop($event)">
+<div class="box" *ngFor="let item of box" cdkDrag> <div class="inside-box" >{{item}}</div></div>
+
+</div>
+
+
+<!-- <table class="table" >
   <tbody >
     <tr *ngFor="let row of rows" class="list" cdkDropList
-		(cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal">
-      <td class="box" *ngFor="let column of box" >
-      <div cdkDrag  >{{rows[column]}}
-        <div cdkDragHandle  class="pl-2 float-left align-bottom cursor-move" class="inside-box">o</div>
-      </div>
+		(cdkDropListDropped)="drop($event)" >
+      <td class="box" *ngFor="let column of box" cdkDrag>
+        <div
+        cdkDragHandle  class="pl-2 float-left align-bottom cursor-move" class="inside-box"> {{column}}</div>
       </td >
     </tr >
   </tbody >
-</table >
+</table > -->

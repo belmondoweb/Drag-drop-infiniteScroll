@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import {CdkDragDrop, moveItemInArray,transferArrayItem} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-dra-drop',
@@ -11,7 +11,7 @@ export class DraDropComponent implements OnInit {
 rows=[2]
 colums=[2]
 box=[0,1,2,3,4,5,6,7]
-//  list=[[0,1,2,3,4,5,6,7],[0,1,2,3,4,5,6,7]]
+list=[0,1,2,3,4,5,6,7]
 
  draggable: any;
 
@@ -21,18 +21,27 @@ box=[0,1,2,3,4,5,6,7]
   }
 
   ngOnInit(): void {
-    this.rows=new Array(8);
+   let rows= this.rows=new Array(8);
     this.colums=new Array(8);  
   }
 
 
 
 // cdk
+// drop(event: CdkDragDrop<any[]>) {
+//   moveItemInArray(this.box,  event.previousIndex, event.currentIndex);
+// }
+
 drop(event: CdkDragDrop<any[]>) {
-  moveItemInArray(this.box,  event.previousIndex, event.currentIndex);
+  if (event.previousContainer === event.container) {
+    moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  } else {
+    transferArrayItem(event.previousContainer.data,
+                      event.container.data,
+                      event.previousIndex,
+                      event.currentIndex);
+  }
 }
-
-
 
 
 }
