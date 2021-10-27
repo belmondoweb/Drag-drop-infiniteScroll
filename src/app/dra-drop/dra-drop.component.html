@@ -1,0 +1,16 @@
+<div class="container">
+    <h1>Drag and Drop</h1>
+</div>
+
+<table class="table" >
+  <tbody >
+    <tr *ngFor="let row of rows" class="list" cdkDropList
+		(cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal">
+      <td class="box" *ngFor="let column of box" >
+      <div cdkDrag  >{{rows[column]}}
+        <div cdkDragHandle  class="pl-2 float-left align-bottom cursor-move" class="inside-box">o</div>
+      </div>
+      </td >
+    </tr >
+  </tbody >
+</table >

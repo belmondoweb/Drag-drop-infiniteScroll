@@ -1,0 +1,28 @@
+<button  type="button" class="btn btn-warning list-button" (click)="toggle()" id="bt">
+    {{buttonName}}
+</button>
+
+<ng-container class="col-md-6 bg-color" *ngIf="show">
+    <div class="list">
+    <div class="section">
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+              </tr>
+            </thead>
+            <tbody infinite-scroll
+            [infiniteScrollDistance]="distance"
+            [infiniteScrollThrottle]="throttle"
+            (scrolled)="onScroll()">
+              <tr *ngFor="let item of item; let i=index " >
+                <th scope="row" class="numb">{{item?.id}}</th>
+                <td >{{item?.title}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</ng-container>
+

@@ -1,0 +1,34 @@
+
+
+<button  type="button" class="btn btn-warning list-button" (click)="toggle()" id="bt">
+  {{buttonName}}
+</button>
+
+<ng-container class="col-md-6 bg-color" *ngIf="show">
+  <div class="list">
+  <div class="section">
+    <ul class="list-group">
+    <li class="list-item" *ngFor="let a of airlines; let i = index">
+      <a class="user-link" *ngIf="i + 1 === airlines.length" #theLastList>
+        <img  class="img" [src]="a.airline[0].logo" />
+        <span>
+          <p>
+            <span class="list-item-heading">Airline</span>: {{ a.airline[0].name }}
+          </p>
+          <p><span class="list-item-heading">Name</span>: {{ a.name }}</p>
+        </span>
+      </a>
+      <a class="user-link" *ngIf="i + 1 != airlines.length">
+        <img class="img" [src]="a.airline[0].logo" />
+        <span>
+          <p>
+            <span class="list-item-heading">Airline</span>: {{ a.airline[0].name }}
+          </p>
+          <p><span class="list-item-heading">Name</span>: {{ a.name }}</p>
+        </span>
+      </a>
+    </li>
+  </ul>
+  </div>
+  </div>
+</ng-container>
